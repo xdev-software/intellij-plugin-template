@@ -4,8 +4,8 @@
   "packageRules": [
     {
       // https://github.com/gradle/gradle/issues/27035
-      "matchPackagePatterns": [
-        "^com.google.guava:guava"
+      "matchPackageNames": [
+        "com.google.guava:guava"
       ],
       "datasources": [
         "maven"
