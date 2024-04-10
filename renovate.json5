@@ -10,7 +10,7 @@
       "datasources": [
         "maven"
       ],
-      "matchCurrentValue": "!/^0/"
+      "matchCurrentVersion": ">0"
     }
   ]
 }
