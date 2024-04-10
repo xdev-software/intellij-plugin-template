@@ -41,7 +41,7 @@ configurations.checkstyle {
 // Add dependencies to test, junit5 api (annotations) and engine (runtime)
 dependencies {
     checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
-    implementation 'com.google.guava:guava:33.0.0-jre'
+    implementation 'com.google.guava:guava:33.1.0-jre'
     testImplementation platform('org.junit:junit-bom:5.10.2'),
             'org.junit.jupiter:junit-jupiter',
             'org.junit.jupiter:junit-jupiter-engine',
