@@ -3,14 +3,15 @@
   "rebaseWhen": "behind-base-branch",
   "packageRules": [
     {
-      // https://github.com/gradle/gradle/issues/27035
-      "matchPackageNames": [
-        "com.google.guava:guava"
+      "description": "Workaround, see https://github.com/gradle/gradle/issues/27035",
+      "matchPackagePatterns": [
+        "^com.google.guava:guava"
       ],
       "datasources": [
         "maven"
       ],
-      "matchCurrentVersion": ">0"
+      "matchCurrentVersion": "0",
+      "enabled": false
     }
   ]
 }
