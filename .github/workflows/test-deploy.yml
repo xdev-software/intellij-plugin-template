@@ -15,8 +15,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 21
-          cache: 'gradle'
-      
+
       - name: Update/Generify version
         run: |
           originalVersion=$(grep -Po 'pluginVersion=\K.*' gradle.properties)
@@ -26,7 +25,7 @@ jobs:
 
           echo "Contents of gradle.properties"
           cat gradle.properties
-      
+
       - name: Publish Plugin
         env:
           PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_PUBLISH_TOKEN }}

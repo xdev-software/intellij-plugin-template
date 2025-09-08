@@ -2,7 +2,7 @@ name: Check IDE Compatibility
 
 on:
   schedule:
-    - cron: '55 2 * * 1'
+    - cron: '55 8 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -36,13 +36,23 @@ jobs:
         sudo df -h
 
     - uses: actions/checkout@v5
-      
+
     - name: Set up JDK
       uses: actions/setup-java@v5
       with:
         distribution: 'temurin'
         java-version: 21
-      
+
+    - name: Cache Gradle
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-ide-compatibility-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-ide-compatibility-
+
     - name: Check compatibility
       run: ./gradlew verifyPlugin --info --stacktrace
 
