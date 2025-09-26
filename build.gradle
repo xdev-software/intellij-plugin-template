@@ -89,7 +89,15 @@ intellijPlatform {
     }
     pluginVerification {
         ides {
-            recommended()
+            select {
+                it.types = [IntelliJPlatformType.IntellijIdeaCommunity]
+                it.sinceBuild = properties("platformSinceBuild")
+                it.untilBuild = '252.*'
+            }
+            select {
+                it.types = [IntelliJPlatformType.IntellijIdea]
+                it.sinceBuild = '253'
+            }
         }
     }
     signPlugin {
