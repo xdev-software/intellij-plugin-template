@@ -72,7 +72,7 @@ dependencies {
 // See https://www.jetbrains.com/intellij-repository/releases
 intellijPlatform {
     pluginConfiguration {
-        pluginId = properties("pluginGroup")
+        id = properties("pluginGroup")
         name = properties("pluginName")
         version = properties("pluginVersion")
         ideaVersion {
