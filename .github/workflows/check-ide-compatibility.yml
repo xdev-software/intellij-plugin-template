@@ -13,25 +13,32 @@ jobs:
     - name: Free up disk space
       run: |
         sudo df -h
-        sudo rm -rf /usr/share/dotnet \
-          /usr/local/.ghcup \
-          /usr/local/swift \
-          /usr/share/swift \
-          /usr/lib/jvm \
-          /usr/local/lib/android \
-          /usr/lib/google-cloud-sdk \
-          /usr/local/share/boost \
-          /usr/local/share/powershell \
-          /usr/local/share/chromium \
-          /usr/local/lib/node_modules \
-          /usr/lib/mono \
-          /usr/lib/heroku \
-          /usr/lib/firefox \
-          /usr/share/miniconda \
-          /opt/microsoft \
-          /opt/chrome \
-          /opt/pipx \
-          "$AGENT_TOOLSDIRECTORY" || true
+        declare -a paths_to_wipe=(
+          "/usr/share/dotnet"
+          "/usr/local/.ghcup"
+          "/usr/local/swift"
+          "/usr/share/swift"
+          "/usr/lib/jvm"
+          "/usr/local/lib/android"
+          "/usr/lib/google-cloud-sdk"
+          "/usr/local/share/boost"
+          "/usr/local/share/powershell"
+          "/usr/local/share/chromium"
+          "/usr/local/lib/node_modules"
+          "/usr/lib/mono"
+          "/usr/lib/heroku"
+          "/usr/lib/firefox"
+          "/usr/share/miniconda"
+          "/opt/microsoft"
+          "/opt/chrome"
+          "/opt/pipx"
+          "$AGENT_TOOLSDIRECTORY"
+        )
+        for p in "${paths_to_wipe[@]}"
+        do
+          echo "Clearing $p"
+          rm -rf $p || true
+        done
         sudo df -h
 
     - uses: actions/checkout@v5
