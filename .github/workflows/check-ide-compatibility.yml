@@ -79,7 +79,7 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
 
-    - name: Reformat report
+    - name: Create issue report
       if: ${{ failure() && steps.check-compatibility.conclusion == 'failure' }}
       run: |
         echo 'Encountered problems during plugin verification' > reported.md
