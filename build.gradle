@@ -54,7 +54,6 @@ dependencies {
         plugins(properties("platformPlugins").map { it.split(",").collect { it.trim() }.findAll { !it.empty } })
         pluginVerifier()
         zipSigner()
-        instrumentationTools()
     }
     checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
     pmd "net.sourceforge.pmd:pmd-ant:${pmdVersion}",
